@@ -78,3 +78,32 @@ INSTALLED_APPS = [
 ```bash
 python manage.py runserver
 ```
+## Session 3 - Getting Started with Templates
+- Create a folder called *templates* inside the *meetups* or component that we create before.
+- Then create *index.html* file inside *templates* folder.
+- Edit *index.html* that we created before. You can be creative or follow the code below
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>All Meetups</title>
+</head>
+
+<body>
+	<h1>All Meetups</h1>
+	<p>Hello World!</p>
+</body>
+
+</html>
+```
+- Edit the *views.py* inside the *meetups* folder, then change the code as below
+```python
+from django.shortcuts import render
+
+def index(request):
+    return render(request, "index.html")
+```
