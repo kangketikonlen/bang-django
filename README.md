@@ -4,15 +4,35 @@ Ampun bang django! tet~ tet~ tet~
 # Notes
 
 ## Session 1 - Creating django kickstarter
-- Create local environment **python3 -m venv env**
-- Activate local environment **source env/bin/activate**
-- Upgrading pip (optional) **python -m pip install --upgrade pip**
-- Install django **python -m pip install Django**
-- Create django template **django-admin startproject *name_without_dash_or_space***
-
+- Create local environment
+```bash
+python3 -m venv env
+```
+- Activate local environment
+```bash
+source env/bin/activat
+```
+- Upgrading pip (optional)
+```bash
+python -m pip install --upgrade pip
+```
+- Install django
+```bash
+python -m pip install Django
+```
+- Create django template
+```bash
+django-admin startproject app
+```
 ## Session 2 - Urls & views
-- Go to the project folder **cd *name_without_dash_or_space***
-- Create components **python manage.py startapp *component_name***
+- Go to the project folder
+```bash
+cd app
+```
+- Create components
+```bash
+python manage.py startapp meetups
+```
 - Edit file called *views.py* and put code below
 ``` python
 from django.shortcuts import render
@@ -21,14 +41,14 @@ from django.http import HttpResponse
 def index(request):
     return HttpResponse("Hello World!")
 ```
-- Create a file called *urls.py* inside the *components* folder
+- Create a file called *urls.py* inside the *meetups* folder
 - Then, put code below
 ```python
 from django.urls import path
 from . import views
 
 urlpatterns = [
-    path("component_name/", views.index),
+    path("meetups/", views.index),
 ]
 ```
 - Edit the *urls.py* inside the django template folder. The code should like below
@@ -38,11 +58,11 @@ from django.urls import path, include
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", include("component_name.urls")),
+    path("", include("meetups.urls")),
 ]
 ```
 - Open the *settings.py* inside the django template folder and find **INSTALLED_APPS**
-- Inside the lists of **INSTALLED_APPS**, put your *component_name* folder. The **INSTALLED_APPS** lists should be like below
+- Inside the lists of **INSTALLED_APPS**, put your *meetups* folder. The **INSTALLED_APPS** lists should be like below
 ```python
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -51,7 +71,10 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "component_name",
+    "meetups",
 ]
 ```
-- Last, run the server with **python manage.py runserver**
+- Last, run the server with
+```bash
+python manage.py runserver
+```
