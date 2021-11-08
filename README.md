@@ -54,3 +54,4 @@ INSTALLED_APPS = [
     "component_name",
 ]
 ```
+- Last, run the server with **python manage.py runserver**
