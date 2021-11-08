@@ -184,3 +184,61 @@ button:hover, .btn:hover {
 
 </html>
 ```
+## Session 5 - Key Django Template Lang Features & Tags
+### Accessing a single lists
+- Edit views.py inside meetups folder and change the code as below
+```python
+from django.shortcuts import render
+
+def index(request):
+    meetups = [
+        {"title": "A First Meetup"},
+        {"title": "A Second Meetup"},
+    ]
+    return render(request, "index.html", {"meetups": meetups})
+```
+- To access the lists, edit index.html inside the template meetups folder and change the body tags as below
+```html
+<body>
+	<h1>All Meetups</h1>
+	<p>Hello World!</p>
+	<p>{{ meetups.0.title }}</p>
+</body>
+```
+### If Statements
+- Edit views.py inside meetups folder and change the code as below
+```python
+from django.shortcuts import render
+
+def index(request):
+    meetups = [
+        {"title": "A First Meetup"},
+        {"title": "A Second Meetup"},
+    ]
+    return render(request, "index.html", {"show_meetups": True, "meetups": meetups})
+```
+- To run the if statement, edit index.html inside the template meetups folder and change the body tags as below
+```html
+<body>
+	<h1>All Meetups</h1>
+	<p>Hello World!</p>
+	{% if show_meetups %}
+	<p>{{ meetups.0.title }}</p>
+	{% endif %}
+</body>
+```
+### For Loops
+- To run the for loops, edit index.html inside the template meetups folder and change the body tags as below
+```html
+<body>
+	<h1>All Meetups</h1>
+	<p>Hello World!</p>
+	{% if show_meetups %}
+	{% for meetup_item in meetups %}
+	<p>{{ meetup_item.title }}</p>
+	{% endfor %}
+	{% else %}
+	<p>No meetups found!</p>
+	{% endif %}
+</body>
+```
