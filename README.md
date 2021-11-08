@@ -107,3 +107,80 @@ from django.shortcuts import render
 def index(request):
     return render(request, "index.html")
 ```
+## Session 4 - Static Files & First Steps with Django Template Lang
+- Create a folder called *static* inside *meetups* component folder
+- Create 3 folders called *images*, *scripts* and *styles*
+- Create css file called *base.css* inside *styles* folder. You can be creative or follow this css rules
+```css
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Roboto+Slab:wght@700&display=swap');
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Roboto', sans-serif;
+	margin: 0;
+	background-color: #ccc3db;
+	color: #3e3e41;
+}
+
+h1, h2, h3 {
+	font-family: 'Roboto Slab', sans-serif;
+	color: #222224;
+}
+
+button, .btn {
+	cursor: pointer;
+	font: inherit;
+	padding: 0.5rem 1.5rem;
+	background-color: #350490;
+	border: 1px solid #350490;
+	color: white;
+	border-radius: 4px;
+	text-decoration: none;
+}
+
+button:hover, .btn:hover {
+	background-color: #230161;
+	border-color: #230161;
+}
+
+#main-header {
+	width: 100%;
+	text-align: center;
+	padding: 2rem 0;
+}
+
+#main-header h1 {
+	font-size: 1.5rem;
+}
+
+#main-logo {
+	font-size: 3rem;
+	font-family: 'Roboto Slab', sans-serif;
+	text-decoration: none;
+	color: #350490;
+	font-weight: bold;
+}
+```
+- Edit *index.html* file inside the *templates* folder and change the code as below
+```html
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>All Meetups</title>
+	<link rel="stylesheet" href="{% static 'meetups/styles/base.css' %}">
+</head>
+
+<body>
+	<h1>All Meetups</h1>
+	<p>Hello World!</p>
+</body>
+
+</html>
+```
