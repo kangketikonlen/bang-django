@@ -8,11 +8,4 @@ def index(request):
         {"title": "A First Meetup"},
         {"title": "A Second Meetup"},
     ]
-    return render(
-        request,
-        "index.html",
-        {
-            "show_meetups": True,
-            "meetups": meetups,
-        },
-    )
+    return render(request, "index.html", {"show_meetups": True, "meetups": meetups})
